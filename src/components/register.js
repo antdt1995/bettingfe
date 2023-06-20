@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import authService from "../services/auth.service";
+import authService from "./services/auth.service";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -167,10 +167,11 @@ export default function Signup() {
             onChange={(e) => setBankAccount(e.target.value)}
           />
         </div>
-
-        <button type="submit" className="btn btn-primary">
+        <div className="text-center"><button type="submit" className="btn btn-primary">
           submit
         </button>
+        </div>
+        
       </form>
 
       <div className="register">{isRegistered ? <Registered /> : null}</div>
