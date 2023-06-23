@@ -3,7 +3,7 @@ import publicService from "../services/public.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import Signout from "./Signout";
+
 
 export default function GetOddByMatch({ betAmount }) {
   const [data, setData] = useState([]);
@@ -85,7 +85,7 @@ export default function GetOddByMatch({ betAmount }) {
           No data to display
         </p>
       )}
-      <Signout />
+ 
     </Container>
   );
 }
