@@ -1,33 +1,34 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { Home } from "./components/pages/Home";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { NotFound } from "./components/pages/NotFound";
-import { Foodaholic } from "./components/pages/Foodaholics";
-import Signin from "./components/signin";
-import Signup from "./components/register";
-import Odd from "./components/Odd";
-import InvoiceDetails from "./components/InvoiceDetails";
-import Cart from './components/Cart';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import NavScrollExample from './components/navbar'
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import NavScrollExample from "./components/navbar";
+import Signin from './components/pages/Signin'
+import Signup from "./components/pages/Register";
+import Odd from "./components/pages/Odd";
+import Cart from "./components/pages/Cart";
+import Account from './components/pages/Account'
+import AdminDashBoard from './components/pages/AdminDashBoard'
+import Home from './components/pages/Home'
+import Match from './components/pages/Match'
 
 function App() {
   return (
-<>
+    <>
       <NavScrollExample />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/matchs" element={<Match />} />
         <Route path="/odds/*" element={<Odd />} />
-        <Route path="/foodaholic" element={<Foodaholic />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/accounts" element={<Account />} />
+        <Route path="/admin" element={<AdminDashBoard />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/invoicedetails" element={<InvoiceDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      </>  
- 
+    </>
   );
 }
 

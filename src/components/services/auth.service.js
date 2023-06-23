@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8099/auth/";
+const API_URL = "http://localhost:8080/auth/";
 
 class AuthService {
   register(firstName, lastName, userName, password, email, phone, bankAccount, bankName) {
@@ -23,8 +23,10 @@ class AuthService {
         password,
       })
       .then((response) => {
-        if (response.data.jwttoken) {
+        if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
+          
+          console.log ('user info after login' + localStorage.getItem("user"));
         }
         console.log(response.data);
         return response.data;

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import publicService from "./services/public.service";
-import InvoiceDetails from "./InvoiceDetails";
+import publicService from "../services/public.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -66,8 +65,7 @@ export default function GetOddByMatch({ betAmount }) {
                 <td>{item.endDate}</td>
                 <td>
                   <div className="mt-auto">
-                     <InvoiceDetails data={item.id}/>
-                  
+                   
                   </div>
                 </td>
               </tr>
@@ -86,7 +84,7 @@ export default function GetOddByMatch({ betAmount }) {
           No data to display
         </p>
       )}
-
+     
     </Container>
   );
 }
