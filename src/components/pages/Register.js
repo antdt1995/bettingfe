@@ -15,15 +15,9 @@ export default function Signup() {
   const [accountCreated, setAccountCreated] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
   const navigate = useNavigate();
-  const Registered = () => {
-    return (
-      <div>
-        <h1>Registered</h1>
-        <p>User Name: {accountCreated.username.value}</p>
-        <button onClick={() => navigate("/signin")}>Sign In</button>
-      </div>
-    );
-  };
+  const handlerNavigate = () => {
+    navigate("/");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -167,14 +161,12 @@ export default function Signup() {
             onChange={(e) => setBankAccount(e.target.value)}
           />
         </div>
-        <div className="text-center"><button type="submit" className="btn btn-primary">
+        <div className="text-center"><button onClick={handlerNavigate} type="submit" className="btn btn-primary">
           submit
         </button>
         </div>
         
       </form>
-
-      <div className="register">{isRegistered ? <Registered /> : null}</div>
     </div>
   );
 }

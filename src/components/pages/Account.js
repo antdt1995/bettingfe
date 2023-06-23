@@ -2,7 +2,7 @@ import UserService from "../services/user.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import React, { useState, useEffect } from "react";
-import Signout from "./Signout";
+
 export default function GetAccount() {
   const [data, setData] = useState("");
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function GetAccount() {
               <td>{data.bankAccount}</td>
             </tr>
           </tbody>
-          <Signout />
+          
         </Table>
       ) : (
         <p>No accounts found.</p>

@@ -4,9 +4,11 @@ const API_URL = "http://localhost:8080/bet/user/";
 const token = JSON.parse(localStorage.getItem("user"));
 class UserService {
   GetAccount() {
+    console.log(token)
     return axios.get(API_URL + "accounts", {
       headers: {
         Authorization: "Bearer " + token.token,
+       
       },
     });
   }
