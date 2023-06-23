@@ -31,8 +31,8 @@ export default function CreateMatch() {
       setAwayId(e.target.value);
     };
 
-    const handleDateChange = (e) => {
-      setStartDate(e.target.value);
+    const handleDateChange = (date) => {
+      setStartDate(date);
     };
     return (
       <Container style={{ color: "white" }}>
@@ -52,16 +52,13 @@ export default function CreateMatch() {
             placeholder="Input Away Team Id"
           />
         </form>
-        <form >
-          <input
-            type="text"
-            value={startDate}
-            onChange={handleDateChange}
-            placeholder="yyyy-MM-dd HH:mm"
-          />
-        </form>
-        
-      
+        <DateTimePicker
+         value={startDate}
+         onChange={handleDateChange}
+          controls={['date', 'time']}
+          dateFormat=" DD MMM, YYYY"
+          timeFormat="H:mm"
+        />
         <button onClick={handleSubmit} type="button">Create Match</button>
 
       </Container>
