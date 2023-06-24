@@ -33,7 +33,7 @@ function NavScrollExample() {
               navbarScroll
             >
               <Nav.Link>
-                <Link to="/odds">Odd</Link>
+                <Link to="/matchs">Football Matchs</Link>
               </Nav.Link>
               {isLoggedIn ? (
                 isAdmin ? (
@@ -50,10 +50,6 @@ function NavScrollExample() {
                   <Link to="/signin">Sign In</Link>
                 </Nav.Link>
               )}
-              
-                  <Nav.Link>
-                    <Link to="/matchs">Match</Link>
-                  </Nav.Link>
             </Nav>
 
             <NavDropdown title="League" id="navbarScrollingDropdown">

@@ -6,12 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavScrollExample from "./components/navbar";
 import Signin from './components/pages/Signin'
 import Signup from "./components/pages/Register";
-import Odd from "./components/pages/Odd";
+import Odd from "./components/PublicPage/Odd";
 import Cart from "./components/pages/Cart";
 import Account from './components/pages/Account'
 import AdminDashBoard from './components/pages/AdminDashBoard'
 import Home from './components/pages/Home'
-import Match from './components/pages/Match'
+import MatchList from './components/PublicPage/ListOfMatch'
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <NavScrollExample />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/matchs" element={<Match />} />
+        <Route path="/matchs" element={<MatchList />} />
         <Route path="/odds/*" element={<Odd />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/accounts" element={<Account />} />

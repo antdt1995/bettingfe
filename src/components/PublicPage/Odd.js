@@ -1,44 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import publicService from "../services/public.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
 
-export default function GetOddByMatch({ betAmount }) {
+export default function GetOddByMatch({matchId}) {
   const [data, setData] = useState([]);
-  const [matchId, setMatchId] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await publicService.getOdd(matchId);
+        console.log(response.data);
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await publicService.getOdd(matchId);
-      console.log(response.data);
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleInputChange = (event) => {
-    setMatchId(event.target.value);
-  };
-
+    fetchData();
+  }, [matchId]);
+ 
 
   return (
     <Container style={{ color: "white" }}>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={matchId}
-            onChange={handleInputChange}
-            placeholder="Input Match ID"
-          />
-          <button type="submit">Get Odds</button>
-        </form>
-      </div>
-
       {data.length > 0 ? (
         <Table striped bordered hover>
           <thead>
@@ -50,7 +35,6 @@ export default function GetOddByMatch({ betAmount }) {
               <th>Odd Type</th>
               <th>Set Score</th>
               <th>End Date</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -63,11 +47,6 @@ export default function GetOddByMatch({ betAmount }) {
                 <td>{item.oddType}</td>
                 <td>{item.setScore}</td>
                 <td>{item.endDate}</td>
-                <td>
-                  <div className="mt-auto">
-                   
-                  </div>
-                </td>
               </tr>
             ))}
           </tbody>

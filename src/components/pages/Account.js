@@ -55,11 +55,12 @@ export default function GetAccount() {
               <td>{data.bankAccount}</td>
             </tr>
           </tbody>
-          <Signout />
+     
         </Table>
       ) : (
         <p>No accounts found.</p>
       )}
+           <Signout />
     </Container>
   );
 }

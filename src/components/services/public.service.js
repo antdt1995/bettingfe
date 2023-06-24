@@ -15,4 +15,11 @@ export default class PublicService {
       },
     });
   }
+  static getMatch(matchId) {
+    return axios.get(`${API_URL}footballmatchs/${matchId}`, {
+      params: {
+        matchId,
+      },
+    });
+  }
 }

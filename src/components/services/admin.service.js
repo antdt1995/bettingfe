@@ -16,6 +16,25 @@ class AdminService {
       }
     });
   }
+  createOdd(houseId, matchId, oddTypeId, oddRate, setScore, endDate) {
+    const URL = `${API_URL}odds/${houseId}/${matchId}/${oddTypeId}`;
+    console.log ("odd",URL);
+    return axios.post(
+      URL,
+      {
+        houseId,
+        matchId,
+        oddTypeId,
+        oddRate,
+        setScore,
+        endDate,
+      }, {
+        headers: {
+          Authorization: "Bearer " + token.token
+        }
+    })
+    
+  }
 }
 
 export default new AdminService();
