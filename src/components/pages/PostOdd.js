@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import adminService from "../services/admin.service";
 import DateTimePicker from "react-datetime";
 import "react-datetime/css/react-datetime.css";
-import Container from "react-bootstrap/Container";
-import { useNavigate } from "react-router-dom";
+
 import moment from "moment";
 
 export default function PostOdd() {
@@ -13,8 +12,8 @@ export default function PostOdd() {
   const [oddRate, setOddRate] = useState("");
   const [setScore, setSetScore] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
-  const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +27,10 @@ export default function PostOdd() {
         setScore,
         formattedDate
       );
-      navigate("/");
+      setIsUpdateSuccess(true);
+      setTimeout(() => {
+        setIsUpdateSuccess(false);
+      }, 3000);
     } catch (error) {
       alert("Create Odd Failed");
     }
@@ -58,19 +60,19 @@ export default function PostOdd() {
     setEndDate(date);
   };
 
-  const handleOpenPopup = () => {
-    setShowPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  const handleTogglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
   };
 
   return (
-    <Container style={{ color: "white" }}>
-      <button onClick={handleOpenPopup}>Create Odd</button>
-      {showPopup && (
+    <>
+     
+      <button onClick={handleTogglePopup}>
+        {isPopupOpen ? 'Cancel' : 'Create Odd'}
+      </button>
+      {isPopupOpen && (
         <div className="popup">
+           {isUpdateSuccess && <p>Create successful!</p>}
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -86,12 +88,14 @@ export default function PostOdd() {
               placeholder="Input Match Id"
               required
             />
-            <select value={oddTypeId} onChange= {handleOddTypeIdChange} required>
-              <option >1</option>
-              <option >2</option>
-              <option >3</option>
-              <option >4</option>
-              <option >5</option>
+            
+            <select value={oddTypeId} onChange={handleOddTypeIdChange} required>
+              <option><p>Input Odd Type Id</p></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
             </select>
 
             <input
@@ -117,10 +121,9 @@ export default function PostOdd() {
               required
             />
             <button type="submit">Submit</button>
-            <button onClick={handleClosePopup}>Cancel</button>
           </form>
         </div>
       )}
-    </Container>
+    </>
   );
 }

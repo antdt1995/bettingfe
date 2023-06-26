@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import adminService from "../services/admin.service";
 import DateTimePicker from "react-datetime";
 import "react-datetime/css/react-datetime.css";
-import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
@@ -10,17 +9,18 @@ export default function CreateMatch() {
   const [homeId, setHomeId] = useState("");
   const [awayId, setAwayId] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
-  const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const formattedDate = moment(startDate).format("YYYY-MM-DD HH:mm");
-      const response = await adminService
+      await adminService
         .createMatch(homeId, awayId, formattedDate)
-        .then(() => {
-          navigate("/");
-        });
+        setIsUpdateSuccess(true);
+      setTimeout(() => {
+        setIsUpdateSuccess(false);
+      }, 3000);
     } catch (error) {
       alert("Create Match Fail");
     }
@@ -36,18 +36,17 @@ export default function CreateMatch() {
   const handleDateChange = (date) => {
     setStartDate(date);
   };
-  const handleOpenPopup = () => {
-    setShowPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  const handleTogglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
   };
   return (
-    <Container style={{ color: "white" }}>
-      <button onClick={handleOpenPopup}>Create Match</button>
-      {showPopup && (
-        <div className="popup">
+    <>
+     <button onClick={handleTogglePopup}>
+        {isPopupOpen ? 'Cancel' : 'Create Match'}
+      </button>
+      {isPopupOpen && (
+        <div className="popup" style={{ display: "block" }}>
+           {isUpdateSuccess && <p>Create successful!</p>}
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -69,10 +68,10 @@ export default function CreateMatch() {
               timeFormat="HH:mm"
             />
             <button type="submit">Submit</button>
-            <button onClick={handleClosePopup}>Cancel</button>
+           
           </form>
         </div>
       )}
-    </Container>
+    </>
   );
 }
