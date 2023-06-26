@@ -17,10 +17,10 @@ class UserService {
     console.log (token.token)
     return axios.post(
       URL,
-      {
+      [{
         oddId,
         betAmount,
-      },
+      }],
       {
         headers: {
           Authorization: "Bearer " + token.token,
