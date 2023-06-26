@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8099/public/";
+const API_URL = "http://localhost:8080/public/";
 
 export default class PublicService {
   static getOdd(matchId, oddId, homeTeam, oddRate, oddType, setScore, endDate) {
@@ -16,10 +16,6 @@ export default class PublicService {
     });
   }
   static getMatch(matchId) {
-    return axios.get(`${API_URL}footballmatchs/${matchId}`, {
-      params: {
-        matchId,
-      },
-    });
+    return axios.get(`${API_URL}footballmatchs/${matchId}`);
   }
 }

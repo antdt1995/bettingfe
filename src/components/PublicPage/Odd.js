@@ -3,7 +3,7 @@ import publicService from "../services/public.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-
+import PlaceBet from "./bet";
 
 export default function GetOddByMatch({matchId}) {
   const [data, setData] = useState([]);
@@ -35,6 +35,7 @@ export default function GetOddByMatch({matchId}) {
               <th>Odd Type</th>
               <th>Set Score</th>
               <th>End Date</th>
+              <th>Betting</th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +48,7 @@ export default function GetOddByMatch({matchId}) {
                 <td>{item.oddType}</td>
                 <td>{item.setScore}</td>
                 <td>{item.endDate}</td>
+                <PlaceBet oddId={item.id}/>
               </tr>
             ))}
           </tbody>

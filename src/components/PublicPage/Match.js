@@ -3,6 +3,8 @@ import publicService from "../services/public.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Odd from './Odd'
+import { Button } from "react-bootstrap";
+
 export default function GetMatch({ matchId }) {
   const [data, setData] = useState('');
 
@@ -41,6 +43,7 @@ export default function GetMatch({ matchId }) {
                 <td>{data.awayScore}</td>
                 <td>{data.totalScore}</td>
                 <td>{data.startDate}</td>
+                
               </tr>
           </tbody>
         </Table>

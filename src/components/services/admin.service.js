@@ -33,8 +33,8 @@ class AdminService {
           Authorization: "Bearer " + token.token
         }
     })
-    
   }
+  
 }
 
 export default new AdminService();
