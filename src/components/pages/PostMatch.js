@@ -66,6 +66,7 @@ export default function CreateMatch() {
               controls={["date", "time"]}
               dateFormat="DD MMM, YYYY"
               timeFormat="HH:mm"
+              placeholder="Start Date"
             />
             <button type="submit">Submit</button>
            

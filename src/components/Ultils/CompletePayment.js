@@ -6,6 +6,7 @@ export default function GetPayment() {
   const navigate = useNavigate();
   const [matchId, setMatchId] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

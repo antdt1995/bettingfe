@@ -12,6 +12,7 @@ import AccountLose from '../Ultils/findLoseAccountByMatchId'
 import MatchByCountBet from '../Ultils/getAllMatchByCountTotalBet'
 import MatchBySumBet from '../Ultils/getAllMatchBySumTotalBet'
 import UpdateMatch from "./UpdateMatch";
+import Transaction from '../Ultils/CompleteTransaction'
 export default function GetAccount() {
   const [data, setData] = useState("");
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function GetAccount() {
           </tbody>
           
           <div>
-            <Match /><PostOdd /><UpdateMatch/><GetPayment /><AccountWin/><AccountLose/><MatchByCountBet/><MatchBySumBet/>
+            <Match /><PostOdd /><UpdateMatch/><GetPayment /><AccountWin/><AccountLose/><MatchByCountBet/><MatchBySumBet/><Transaction/>
           </div>
         </Table>
       ) : (
