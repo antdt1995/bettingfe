@@ -31,7 +31,6 @@ class AdminService {
   }
   createOdd(houseId, matchId, oddTypeId, oddRate, setScore, endDate) {
     const URL = `${API_URL}odds/${houseId}/${matchId}/${oddTypeId}`;
-    console.log ("odd",URL);
     return axios.post(
       URL,
       {
@@ -49,7 +48,6 @@ class AdminService {
   }
   getPayments(matchId) {
     const URL=`${API_URL}houses/complete/${matchId}`;
-    console.log ("payment",URL);
     return axios.post(URL,{
       matchId,
     },{
@@ -103,6 +101,15 @@ class AdminService {
         fromDate: fromDate,
         endDate: endDate,
         limit: limit
+      }
+    })
+  }
+  completeTransaction(id){
+    const URL = `${API_URL}transactions/complete/${id}`;
+    console.log("transction",URL)
+    return axios.post(URL,{id,},{
+      headers: {
+        Authorization: "Bearer " + token.token
       }
     })
   }

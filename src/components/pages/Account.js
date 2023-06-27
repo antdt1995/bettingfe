@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import React, { useState, useEffect } from "react";
 import Signout from "./Signout";
+import Transaction from '../Ultils/CreateTransaction'
 import GetAllInvoice from "./GetAllInvoices";
 export default function GetAccount() {
   const [data, setData] = useState("");
@@ -57,7 +58,7 @@ export default function GetAccount() {
             </tr>
             <GetAllInvoice/>
           </tbody>
-     
+          <Transaction/>
         </Table>
       ) : (
         <p>No accounts found.</p>
