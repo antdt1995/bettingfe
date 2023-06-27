@@ -1,4 +1,4 @@
-import AdminService from "../services/admin.service";
+
 import userService from "../services/user.service";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
@@ -6,6 +6,12 @@ import React, { useState, useEffect } from "react";
 import Signout from "./Signout";
 import Match from "./PostMatch";
 import PostOdd from "./PostOdd";
+import GetPayment from "../Ultils/CompletePayment";
+import AccountWin from '../Ultils/findWinAccountByMatchId'
+import AccountLose from '../Ultils/findLoseAccountByMatchId'
+import MatchByCountBet from '../Ultils/getAllMatchByCountTotalBet'
+import MatchBySumBet from '../Ultils/getAllMatchBySumTotalBet'
+import UpdateMatch from "./UpdateMatch";
 export default function GetAccount() {
   const [data, setData] = useState("");
   useEffect(() => {
@@ -58,13 +64,15 @@ export default function GetAccount() {
               <td>{data.bankAccount}</td>
             </tr>
           </tbody>
-          <PostOdd />
-          <Match />
+          
+          <div>
+            <Match /><PostOdd /><UpdateMatch/><GetPayment /><AccountWin/><AccountLose/><MatchByCountBet/><MatchBySumBet/>
+          </div>
         </Table>
       ) : (
         <p>No accounts found.</p>
       )}
-             <Signout />
+      <Signout />
     </Container>
   );
 }
